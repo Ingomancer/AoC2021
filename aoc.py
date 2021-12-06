@@ -1,12 +1,19 @@
 from diagnostic.binary import power_consumption
 from dive.pilot import product_of_position
+from hydrothermal.vents import count_overlaps
+from lantern.fish import count_fish
 from sonar.sweep import increasing_depths
 import sys
+
+from squid.bingo import find_winner
 
 daymap = {
     1: lambda x: increasing_depths(_input_as_int_list(x)),
     2: lambda x: product_of_position(_input_as_string_int_tuple_list(x)),
-    3: lambda x: power_consumption(_input_as_string_list(x))
+    3: lambda x: power_consumption(_input_as_string_list(x)),
+    4: lambda x: find_winner(_input_as_string_list(x)),
+    5: lambda x: count_overlaps(_input_as_string_list(x)),
+    6: lambda x: count_fish(_input_as_int_list(x)),
 }
 
 def main():
@@ -18,7 +25,11 @@ def main():
         print(daymap[day](input_file))
 
 def _input_as_int_list(input_file):
-    return map(int, input_file.readlines())
+    lines = input_file.readlines()
+    if len(lines) > 1:
+        return list(map(int, input_file.readlines()))
+    else:
+        return map(int, lines[0].split(','))
 
 def _input_as_string_int_tuple_list(input_file):
     output = []
