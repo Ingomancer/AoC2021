@@ -2,10 +2,12 @@ from diagnostic.binary import power_consumption
 from dive.pilot import product_of_position
 from hydrothermal.vents import count_overlaps
 from lantern.fish import count_fish
+from segment.search import parse_digits
 from sonar.sweep import increasing_depths
 import sys
 
 from squid.bingo import find_winner
+from whales.treachery import least_spent_fuel
 
 daymap = {
     1: lambda x: increasing_depths(_input_as_int_list(x)),
@@ -14,6 +16,8 @@ daymap = {
     4: lambda x: find_winner(_input_as_string_list(x)),
     5: lambda x: count_overlaps(_input_as_string_list(x)),
     6: lambda x: count_fish(_input_as_int_list(x)),
+    7: lambda x: least_spent_fuel(_input_as_int_list(x)),
+    8: lambda x: parse_digits(_input_as_string_list(x)),
 }
 
 def main():
