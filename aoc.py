@@ -3,6 +3,7 @@ from dive.pilot import product_of_position
 from hydrothermal.vents import count_overlaps
 from lantern.fish import count_fish
 from segment.search import parse_digits
+from smoke.lava import risk_levels
 from sonar.sweep import increasing_depths
 import sys
 
@@ -18,6 +19,7 @@ daymap = {
     6: lambda x: count_fish(_input_as_int_list(x)),
     7: lambda x: least_spent_fuel(_input_as_int_list(x)),
     8: lambda x: parse_digits(_input_as_string_list(x)),
+    9: lambda x: risk_levels(_input_as_coordinate_dict(x)),
 }
 
 def main():
@@ -31,7 +33,7 @@ def main():
 def _input_as_int_list(input_file):
     lines = input_file.readlines()
     if len(lines) > 1:
-        return list(map(int, input_file.readlines()))
+        return list(map(int, lines))
     else:
         return map(int, lines[0].split(','))
 
@@ -46,5 +48,11 @@ def _input_as_string_int_tuple_list(input_file):
 def _input_as_string_list(input_file):
     return input_file.read().splitlines()
 
+def _input_as_coordinate_dict(input_file):
+    coord_dict = {}
+    for i, vals in enumerate(input_file.read().splitlines()):
+        for j, val in enumerate(vals):
+            coord_dict[(i, j)] = int(val)
+    return coord_dict
 if __name__ == "__main__":
     main()
