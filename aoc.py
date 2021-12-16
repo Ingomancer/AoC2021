@@ -8,6 +8,7 @@ from sonar.sweep import increasing_depths
 import sys
 
 from squid.bingo import find_winner
+from syntax.score import calc_score
 from whales.treachery import least_spent_fuel
 
 daymap = {
@@ -20,6 +21,7 @@ daymap = {
     7: lambda x: least_spent_fuel(_input_as_int_list(x)),
     8: lambda x: parse_digits(_input_as_string_list(x)),
     9: lambda x: risk_levels(_input_as_coordinate_dict(x)),
+    10: lambda x: calc_score(_input_as_string_list(x)),
 }
 
 def main():
