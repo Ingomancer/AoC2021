@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, deque
 import timeit
 
 def count_fish(input):

@@ -1,7 +1,7 @@
 from diagnostic.binary import power_consumption
 from dive.pilot import product_of_position
 from hydrothermal.vents import count_overlaps
-from lantern.fish import count_fish
+from lantern.fish import count_fish_faster
 from segment.search import parse_digits
 from smoke.lava import risk_levels
 from sonar.sweep import increasing_depths
@@ -17,7 +17,7 @@ daymap = {
     3: lambda x: power_consumption(_input_as_string_list(x)),
     4: lambda x: find_winner(_input_as_string_list(x)),
     5: lambda x: count_overlaps(_input_as_string_list(x)),
-    6: lambda x: count_fish(_input_as_int_list(x)),
+    6: lambda x: count_fish_faster(_input_as_int_list(x)),
     7: lambda x: least_spent_fuel(_input_as_int_list(x)),
     8: lambda x: parse_digits(_input_as_string_list(x)),
     9: lambda x: risk_levels(_input_as_coordinate_dict(x)),
